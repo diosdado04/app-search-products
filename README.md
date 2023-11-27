@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Para correr este proyecto debe tener este tipo de configuración:
+ Angular CLI: 16.2.10
+ Node: 18.13.0
+ Package Manager: npm 8.19.3
+En esta app se realizo mediante un clean architecture,se uso standalone,formularios tipados y componentes genericos para que la app fuera escalable.
