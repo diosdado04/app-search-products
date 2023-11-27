@@ -1,0 +1,17 @@
+.table__conf {
+  display: flex;
+}
+
+.padding__table {
+  padding: 0.5rem;
+}
+
+.spinner__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+*{
+  background-color: white;
+}
