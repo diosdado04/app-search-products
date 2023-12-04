@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessagesService {
-
-  constructor(private toastr: ToastrService) { }
-  error(title: string, body: string){
-    this.toastr.error(body, title);
+  constructor(private toast: ToastrService) {}
+  error(title: string, body: string) {
+    if (this.toast.toasts.length === 0) this.toast.error(title, body);
   }
-  
 }
