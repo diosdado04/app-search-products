@@ -1,9 +1,9 @@
-<div class="padding__table">
-  <div class="spinner__center" *ngIf="false">
+<div class="tabla__spinner__container">
+  <div class="spinner__center">
     <mat-spinner></mat-spinner>
   </div>
 
-  <div class="mat-elevation-z8 table__padding__bottom">
+  <div class="mat-elevation-z8 table__padding__bottom table__data">
     <table mat-table #table [dataSource]="dataSource">
       <ng-container
         *ngFor="let column of columnsTable"
@@ -25,3 +25,30 @@
     </mat-paginator>
   </div>
 </div>
+
+
+<!--
+
+  .tabla__spinner__container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: lightgray;
+}
+
+.spinner__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightblue;
+  padding: 20px;
+  z-index: 1;
+}
+<div class="tabla__spinner__container">
+  <div class="spinner__center">
+    Spinner
+  </div>
+  <div>Tabla</div>
+</div>
+-->

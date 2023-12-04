@@ -6,12 +6,68 @@
   padding: 0.5rem;
 }
 
+
+
+.tabla__spinner__container {
+  position: relative;
+}
+
 .spinner__center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Asegúrate de que el z-index del spinner sea mayor que el de la tabla */
+  /* Estilos del spinner, por ejemplo, un spinner con CSS o un gif animado */
 }
-*{
-  background-color: white;
+
+
+table__data {
+  z-index: 0; /* Asegúrate de que el z-index de la tabla sea menor que el del spinner */
+  /* Estilos de la tabla */
+  width: 100%;
+  opacity: 0.35;
+  /* Otros estilos de la tabla */
 }
+
+
+/*.spinner__center {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  padding: 20px;
+  top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+.table__data {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}*/
+
+//.spinner__center {
+//  position: relative;
+//  top: 50%;
+//  left: 50%;
+//  transform: translate(-50%, -50%);
+  //width: 100px; /* Ajusta el ancho según tus necesidades */
+  //height: 100px; /* Ajusta la altura según tus necesidades */
+  //background-color: rgba(255, 0, 0, 0.5); /* Color de fondo semitransparente */
+  //background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de opacidad */
+//  z-index: 1;
+//}
+
+//.table__data {
+  //position: absolute;
+  //width: 100%; /* Ajusta el ancho según tus necesidades */
+  //height: 100%; /* Ajusta la altura según tus necesidades */
+  //background-color: rgba(0, 0, 255, 0.5); /* Color de fondo semitransparente */
+//  background: transparent;
+//  z-index: 0;
+//}
