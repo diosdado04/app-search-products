@@ -9,6 +9,7 @@ import { Products } from '../model/search-result-products.model';
 import {
   debounceTime,
   distinctUntilChanged,
+  filter,
   Observable,
   Subject,
   switchMap,
@@ -26,8 +27,9 @@ import { PRODUCTS_DEF_CONSTANTS } from 'src/app/shared/constanst/constants-def-p
 })
 export class ProductsComponent {
   columnsTable: ColumnsTable[] = [];
-  searchProducts$ = new Subject<any>();
+  searchProducts$ = new Subject<ParamsSearhProductModel>();
   productReturn$!: Observable<Products[]>;
+  showSpinner: boolean = false;
 
   ngOnInit(): void {
     this.createTableColumns();
@@ -64,14 +66,23 @@ export class ProductsComponent {
   }
 
   constructor(private productService: ProductService) {
-    this.productReturn$ = this.searchProducts$.pipe(
+     this.getProductosService();
+  }
+
+  getProductosService(){
+    this.productReturn$ = this.searchProducts$.pipe( 
       debounceTime(500),
+      filter(() => {
+        this.showSpinner = false;
+        return true;
+      }),
       distinctUntilChanged(),
       switchMap((field) => this.productService.getProductsByParams(field))
     );
   }
 
   writeFormField(field: ParamsSearhProductModel) {
+    this.showSpinner = true;
     this.searchProducts$.next(field);
   }
 }

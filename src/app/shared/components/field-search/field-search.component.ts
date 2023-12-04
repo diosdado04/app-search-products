@@ -41,7 +41,7 @@ export class FieldSearchComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.destroy$),
         map((formsData) => {
-          this.valueForm.emit(formsData);
+          this.valueForm.emit(formsData as ParamsSearhProductModel);
         })
       )
       .subscribe();
