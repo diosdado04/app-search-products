@@ -8,6 +8,7 @@ import {
 import { MaterialModuleModule } from 'src/app/modules/material-module/material-module.module';
 import { MatPaginator } from '@angular/material/paginator';
 import { ColumnsTable } from '../../models/columns-table.models';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-table',
@@ -19,12 +20,13 @@ import { ColumnsTable } from '../../models/columns-table.models';
 export class TableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() showSpinner: boolean = false;
-  dataSource: any = [];
+  dataSource: MatTableDataSource<Array<any>> = new MatTableDataSource();
   displayedColumns: string[] = [];
   columnsTable: ColumnsTable[] = [];
 
   @Input() set dataTable(data: any) {
-    this.dataSource = data;
+    this.dataSource = new MatTableDataSource(data);
+    this.dataSource.paginator = this.paginator;
   }
 
   @Input() set columns(columns: ColumnsTable[]) {
@@ -33,6 +35,6 @@ export class TableComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.dataSource) this.dataSource.paginator = this.paginator;
-  }
+      this.dataSource.paginator = this.paginator;
+    }  
 }

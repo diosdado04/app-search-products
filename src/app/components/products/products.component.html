@@ -1,3 +1,4 @@
-<app-field-search (valueForm)="writeFormField($event)"></app-field-search>
-<app-table [dataTable]="productReturn$ | async" [columns]="columnsTable" [showSpinner]="showSpinner"></app-table>
-
+<app-field-search (valueForm)="writeFormField($event)" [formGroup]="formGroup" [labelFormControl]="labelProducts"></app-field-search>
+<div class="paddingSide">
+    <app-table  [dataTable]="productReturn$ | async" [columns]="columnsTable" [showSpinner]="showSpinner"></app-table>
+</div>

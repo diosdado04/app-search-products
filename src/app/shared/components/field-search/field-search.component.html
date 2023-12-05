@@ -1,47 +1,11 @@
 <form [formGroup]="formGroup" class="center__component">
   <div class="example-container">
-    <mat-form-field>
-      <mat-label>{{ labelProducts.BAR_CODE_LABEL }}</mat-label>
+    <mat-form-field *ngFor="let data of labelFormControl">
+      <mat-label>{{ data.label }}</mat-label>
       <input
         matInput
-        [placeholder]="labelProducts.BAR_CODE_LABEL"
-        formControlName="barcode"
-      />
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ labelProducts.MANUFACTURE_LABEL }}</mat-label>
-      <input
-        matInput
-        [placeholder]="labelProducts.MANUFACTURE_LABEL"
-        formControlName="manufacturer"
-      />
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ labelProducts.CATEGORY_LABEL }}</mat-label>
-      <input
-        matInput
-        [placeholder]="labelProducts.CATEGORY_LABEL"
-        formControlName="category"
-      />
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ labelProducts.BRAND_LABEL }}</mat-label>
-      <input
-        matInput
-        [placeholder]="labelProducts.BRAND_LABEL"
-        formControlName="brand"
-      />
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ labelProducts.SEARCH_LABEL }}</mat-label>
-      <input
-        matInput
-        [placeholder]="labelProducts.SEARCH_LABEL"
-        formControlName="search"
+        [placeholder]="data.label"
+        [formControlName]="data.formcontrol"
       />
     </mat-form-field>
   </div>

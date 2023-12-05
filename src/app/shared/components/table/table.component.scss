@@ -6,6 +6,10 @@
   padding: 0.5rem;
 }
 
+.header__table{
+  color: #3f51b5;
+}
+
 
 
 .tabla__spinner__container {
@@ -29,45 +33,3 @@ table__data {
   opacity: 0.35;
   /* Otros estilos de la tabla */
 }
-
-
-/*.spinner__center {
-  position: relative;
-  z-index: 1;
-  background-color: transparent;
-  padding: 20px;
-  top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
-}
-
-.table__data {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-}*/
-
-//.spinner__center {
-//  position: relative;
-//  top: 50%;
-//  left: 50%;
-//  transform: translate(-50%, -50%);
-  //width: 100px; /* Ajusta el ancho según tus necesidades */
-  //height: 100px; /* Ajusta la altura según tus necesidades */
-  //background-color: rgba(255, 0, 0, 0.5); /* Color de fondo semitransparente */
-  //background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de opacidad */
-//  z-index: 1;
-//}
-
-//.table__data {
-  //position: absolute;
-  //width: 100%; /* Ajusta el ancho según tus necesidades */
-  //height: 100%; /* Ajusta la altura según tus necesidades */
-  //background-color: rgba(0, 0, 255, 0.5); /* Color de fondo semitransparente */
-//  background: transparent;
-//  z-index: 0;
-//}

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FieldSearchComponent } from 'src/app/shared/components/field-search/field-search.component';
 import { TableComponent } from 'src/app/shared/components/table/table.component';
 import { ParamsSearhProductModel } from '../model/params-search-product.model';
@@ -15,8 +15,13 @@ import {
   switchMap,
 } from 'rxjs';
 import { ColumnsTable } from 'src/app/shared/models/columns-table.models';
-import { PRODUCTS_LABEL_CONSTANTS } from 'src/app/shared/constanst/constants-label-products';
+import {
+  ARRAY_PRODUCTS_LABEL_CONSTANTS,
+  PRODUCTS_LABEL_CONSTANTS,
+} from 'src/app/shared/constanst/constants-products';
 import { PRODUCTS_DEF_CONSTANTS } from 'src/app/shared/constanst/constants-def-products';
+import { FormTypeProducts } from '../model/form-type-products';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -25,14 +30,31 @@ import { PRODUCTS_DEF_CONSTANTS } from 'src/app/shared/constanst/constants-def-p
   standalone: true,
   imports: [CommonModule, FieldSearchComponent, TableComponent, ToastrModule],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   columnsTable: ColumnsTable[] = [];
+  formGroup!: FormGroup<FormTypeProducts>;
+  labelProducts = ARRAY_PRODUCTS_LABEL_CONSTANTS;
   searchProducts$ = new Subject<ParamsSearhProductModel>();
   productReturn$!: Observable<Products[]>;
   showSpinner: boolean = false;
 
+  constructor(private productService: ProductService) {
+    this.getProductosService();
+  }
+
   ngOnInit(): void {
+    this.createFormFilters();
     this.createTableColumns();
+  }
+
+  createFormFilters() {
+    this.formGroup = new FormGroup({
+      barcode: new FormControl(''),
+      category: new FormControl(''),
+      manufacturer: new FormControl(''),
+      brand: new FormControl(''),
+      search: new FormControl(''),
+    });     
   }
 
   createTableColumns() {
@@ -65,19 +87,13 @@ export class ProductsComponent {
     ];
   }
 
-  constructor(private productService: ProductService) {
-     this.getProductosService();
-  }
-
-  getProductosService(){
-    this.productReturn$ = this.searchProducts$.pipe( 
+  getProductosService() {
+    this.productReturn$ = this.searchProducts$.pipe(
       debounceTime(500),
-      filter(() => {
+      switchMap((field) => {
         this.showSpinner = false;
-        return true;
-      }),
-      distinctUntilChanged(),
-      switchMap((field) => this.productService.getProductsByParams(field))
+        return this.productService.getProductsByParams(field)
+      })
     );
   }
 

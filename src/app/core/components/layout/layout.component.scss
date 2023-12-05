@@ -1,9 +1,10 @@
 .container__padding {
   padding: 5px;
 }
-.footer {
-  bottom: 0;
-  position: absolute;
-  margin: 0;
-  width: 100%;
+:host, footer {
+  display: flex;
+  flex-direction: column;
+}
+:host{
+  height: 100%;
 }
